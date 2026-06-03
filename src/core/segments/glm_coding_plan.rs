@@ -13,7 +13,7 @@ impl GlmCodingPlanSegment {
 
 impl Segment for GlmCodingPlanSegment {
     fn collect(&self, _input: &InputData) -> Option<SegmentData> {
-        // TODO: 后续开发动态数据获取，当前使用静态内容
+        // TODO: 后续开发动态数据获取，当前使用静态占位内容
         Some(SegmentData {
             primary: "5h:22% · 7d:10%".to_string(),
             secondary: String::new(),
