@@ -171,14 +171,14 @@ impl GlmCodingPlanSegment {
 
         for limit in limits {
             let display = match limit.unit {
-                3 => format!("{}h:{}%", limit.number, limit.percentage),
-                6 => format!("{}d:{}%", limit.number * 7, limit.percentage),
+                3 => format!("{}h·{}%", limit.number, limit.percentage),
+                6 => format!("{}d·{}%", limit.number * 7, limit.percentage),
                 _ => continue,
             };
             parts.push(display);
         }
 
-        parts.join(" · ")
+        parts.join(" / ")
     }
 }
 
