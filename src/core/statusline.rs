@@ -506,7 +506,27 @@ pub fn collect_all_segments(
                 segment.collect(input)
             }
             crate::config::SegmentId::GlmCodingPlan => {
-                let segment = GlmCodingPlanSegment::new();
+                let api_url = segment_config
+                    .options
+                    .get("api_url")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or("https://bigmodel.cn/api/monitor/usage/quota/limit")
+                    .to_string();
+                let token = segment_config
+                    .options
+                    .get("token")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or("")
+                    .to_string();
+                let cache_duration = segment_config
+                    .options
+                    .get("cache_duration")
+                    .and_then(|v| v.as_u64())
+                    .unwrap_or(60);
+                let segment = GlmCodingPlanSegment::new()
+                    .with_api_url(api_url)
+                    .with_token(token)
+                    .with_cache_duration(cache_duration);
                 segment.collect(input)
             }
             crate::config::SegmentId::Update => {

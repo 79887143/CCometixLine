@@ -123,7 +123,21 @@ pub fn glm_coding_plan_segment() -> SegmentConfig {
             background: None,
         },
         styles: TextStyleConfig::default(),
-        options: HashMap::new(),
+        options: {
+            let mut opts = HashMap::new();
+            opts.insert(
+                "api_url".to_string(),
+                serde_json::Value::String(
+                    "https://bigmodel.cn/api/monitor/usage/quota/limit".to_string(),
+                ),
+            );
+            opts.insert("token".to_string(), serde_json::Value::String(String::new()));
+            opts.insert(
+                "cache_duration".to_string(),
+                serde_json::Value::Number(60.into()),
+            );
+            opts
+        },
     }
 }
 
