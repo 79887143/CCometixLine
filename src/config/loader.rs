@@ -79,6 +79,7 @@ impl ConfigLoader {
     }
 
     /// Initialize themes directory and create built-in theme files (silent mode)
+    /// Always overwrites built-in themes to ensure they are up-to-date with the code.
     fn init_themes_silent() -> Result<(), Box<dyn std::error::Error>> {
         let themes_dir = Self::get_themes_path();
 
@@ -100,11 +101,10 @@ impl ConfigLoader {
         for theme_name in &builtin_themes {
             let theme_path = themes_dir.join(format!("{}.toml", theme_name));
 
-            if !theme_path.exists() {
-                let theme_config = crate::ui::themes::ThemePresets::get_theme(theme_name);
-                let content = toml::to_string_pretty(&theme_config)?;
-                fs::write(&theme_path, content)?;
-            }
+            // Always overwrite built-in themes with latest code definitions
+            let theme_config = crate::ui::themes::ThemePresets::get_theme(theme_name);
+            let content = toml::to_string_pretty(&theme_config)?;
+            fs::write(&theme_path, content)?;
         }
 
         Ok(())

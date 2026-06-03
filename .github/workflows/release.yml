@@ -24,18 +24,11 @@ jobs:
     - name: Build binary
       run: cargo build --release
 
-    - name: Package Windows
-      shell: pwsh
-      run: |
-        New-Item -ItemType Directory -Force -Path dist
-        Copy-Item target/release/ccometixline.exe dist/ccline.exe
-        Compress-Archive -Path dist/ccline.exe -DestinationPath ccline-windows-x64.zip
-
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ccline-windows-x64.zip
-        path: ccline-windows-x64.zip
+        name: ccline-win32-x64
+        path: target/release/ccometixline.exe
 
   release:
     name: Create Release
