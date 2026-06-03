@@ -35,6 +35,7 @@ impl SettingsComponent {
                 SegmentId::Cost => "Cost",
                 SegmentId::Session => "Session",
                 SegmentId::OutputStyle => "Output Style",
+                SegmentId::GlmCodingPlan => "GLM Coding Plan",
                 SegmentId::Update => "Update",
             };
             let current_icon = match config.style.mode {

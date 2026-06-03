@@ -170,6 +170,11 @@ impl PreviewComponent {
                         map
                     },
                 },
+                SegmentId::GlmCodingPlan => SegmentData {
+                    primary: "5h:22% · 7d:10%".to_string(),
+                    secondary: "".to_string(),
+                    metadata: HashMap::new(),
+                },
                 SegmentId::Update => SegmentData {
                     primary: format!("v{}", env!("CARGO_PKG_VERSION")),
                     secondary: "".to_string(),

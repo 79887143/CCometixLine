@@ -505,6 +505,7 @@ impl App {
                         SegmentId::Cost => "Cost",
                         SegmentId::Session => "Session",
                         SegmentId::OutputStyle => "Output Style",
+                        SegmentId::GlmCodingPlan => "GLM Coding Plan",
                         SegmentId::Update => "Update",
                     };
                     let is_enabled = segment.enabled;
@@ -532,6 +533,7 @@ impl App {
                                 SegmentId::Cost => "Cost",
                                 SegmentId::Session => "Session",
                                 SegmentId::OutputStyle => "Output Style",
+                                SegmentId::GlmCodingPlan => "GLM Coding Plan",
                                 SegmentId::Update => "Update",
                             };
                             let is_enabled = segment.enabled;
