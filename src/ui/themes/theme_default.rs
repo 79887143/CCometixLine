@@ -109,6 +109,24 @@ pub fn usage_segment() -> SegmentConfig {
     }
 }
 
+pub fn glm_coding_plan_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::GlmCodingPlan,
+        enabled: false,
+        icon: IconConfig {
+            plain: "🔋".to_string(),
+            nerd_font: "\u{f1e6}".to_string(),
+        },
+        colors: ColorConfig {
+            icon: Some(AnsiColor::Color16 { c16: 14 }), // Cyan
+            text: Some(AnsiColor::Color16 { c16: 14 }),
+            background: None,
+        },
+        styles: TextStyleConfig::default(),
+        options: HashMap::new(),
+    }
+}
+
 pub fn cost_segment() -> SegmentConfig {
     SegmentConfig {
         id: SegmentId::Cost,

@@ -505,6 +505,10 @@ pub fn collect_all_segments(
                 let segment = OutputStyleSegment::new();
                 segment.collect(input)
             }
+            crate::config::SegmentId::GlmCodingPlan => {
+                let segment = GlmCodingPlanSegment::new();
+                segment.collect(input)
+            }
             crate::config::SegmentId::Update => {
                 let segment = UpdateSegment::new();
                 segment.collect(input)

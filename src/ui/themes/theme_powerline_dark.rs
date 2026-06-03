@@ -258,3 +258,33 @@ pub fn usage_segment() -> SegmentConfig {
         },
     }
 }
+
+pub fn glm_coding_plan_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::GlmCodingPlan,
+        enabled: false,
+        icon: IconConfig {
+            plain: "🔋".to_string(),
+            nerd_font: "\u{f1e6}".to_string(),
+        },
+        colors: ColorConfig {
+            icon: Some(AnsiColor::Rgb {
+                r: 209,
+                g: 213,
+                b: 219,
+            }),
+            text: Some(AnsiColor::Rgb {
+                r: 209,
+                g: 213,
+                b: 219,
+            }),
+            background: Some(AnsiColor::Rgb {
+                r: 45,
+                g: 50,
+                b: 59,
+            }),
+        },
+        styles: TextStyleConfig::default(),
+        options: HashMap::new(),
+    }
+}

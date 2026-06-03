@@ -72,6 +72,7 @@ pub enum SegmentId {
     Cost,
     Session,
     OutputStyle,
+    GlmCodingPlan,
     Update,
 }
 
