@@ -124,7 +124,11 @@ impl Config {
         }
 
         let content = fs::read_to_string(config_path)?;
-        let config: Config = toml::from_str(&content)?;
+        let mut config: Config = toml::from_str(&content)?;
+
+        // Migrate: add missing segments from current theme's default config
+        config.migrate_missing_segments();
+
         Ok(config)
     }
 

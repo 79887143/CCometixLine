@@ -241,6 +241,28 @@ impl NormalizedUsage {
 }
 
 impl Config {
+    /// Add missing segments from the current theme's default preset.
+    /// This ensures newly added segments appear in existing configs.
+    pub fn migrate_missing_segments(&mut self) {
+        let default_config = crate::ui::themes::ThemePresets::get_theme(&self.theme);
+
+        let existing_ids: std::collections::HashSet<SegmentId> =
+            self.segments.iter().map(|s| s.id).collect();
+
+        let mut added = false;
+        for default_segment in &default_config.segments {
+            if !existing_ids.contains(&default_segment.id) {
+                self.segments.push(default_segment.clone());
+                added = true;
+            }
+        }
+
+        // Save back if any segments were added
+        if added {
+            let _ = self.save();
+        }
+    }
+
     /// Check if current config matches the specified theme preset
     pub fn matches_theme(&self, theme_name: &str) -> bool {
         let theme_preset = crate::ui::themes::ThemePresets::get_theme(theme_name);
